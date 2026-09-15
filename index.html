@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#3b2a14" />
+    <meta name="description" content="Minecraft-themed GPS for Boerne, Helotes and San Antonio, Texas" />
+    <title>BlockNav</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="map" role="application" aria-label="Map"></div>
+
+      <header id="topbar">
+        <div id="brand">
+          <span class="brand-name">BlockNav</span>
+          <span id="splash" class="splash"></span>
+        </div>
+        <div id="search-box" class="mc-slot">
+          <input
+            id="search"
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Search Boerne, Helotes, San Antonio..."
+            aria-label="Search places"
+          />
+          <button id="search-clear" class="mc-icon-btn" aria-label="Clear search" hidden></button>
+        </div>
+        <ul id="results" class="mc-panel" hidden></ul>
+      </header>
+
+      <div id="banner" class="mc-panel" hidden>
+        <canvas id="banner-icon" width="64" height="64"></canvas>
+        <div class="banner-text">
+          <div id="banner-dist">--</div>
+          <div id="banner-instr">--</div>
+          <div id="banner-sub"></div>
+        </div>
+        <button id="banner-end" class="mc-btn mc-btn-red" type="button">End</button>
+      </div>
+
+      <aside id="panel" class="mc-panel" hidden></aside>
+
+      <nav id="hotbar" aria-label="Toolbar"></nav>
+
+      <div id="toast" hidden></div>
+
+      <div id="loading">
+        <div class="loading-title">BlockNav</div>
+        <div id="loading-msg">Building terrain...</div>
+        <div class="mc-progress"><div id="loading-bar"></div></div>
+        <div class="loading-sub">Boerne &bull; Helotes &bull; San Antonio</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

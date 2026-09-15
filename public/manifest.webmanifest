@@ -1,0 +1,13 @@
+{
+  "name": "BlockNav",
+  "short_name": "BlockNav",
+  "description": "Minecraft-themed GPS for Boerne, Helotes and San Antonio, Texas",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#3b2a14",
+  "theme_color": "#3b2a14",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
