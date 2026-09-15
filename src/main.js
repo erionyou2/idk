@@ -516,8 +516,8 @@ function fitRoute(route) {
 
 function startNav() {
   if (!state.route) return;
-  if (!state.origin?.isUser) {
-    // Navigation follows the live GPS position, so re-route from where the user actually is.
+  if (!state.origin) {
+    // Use live GPS only when no origin has been selected.
     setOrigin(USER_ORIGIN);
   }
   state.navigating = true;
@@ -561,7 +561,7 @@ function onNavTick() {
     return;
   }
 
-  if (loc.distanceToRoute > OFF_ROUTE_METERS) {
+  if (state.origin?.isUser && loc.distanceToRoute > OFF_ROUTE_METERS) {
     state.offRouteCount += 1;
     if (state.offRouteCount >= OFF_ROUTE_FIXES && !state.rerouting) reroute();
   } else {
