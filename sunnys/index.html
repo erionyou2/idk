@@ -21,6 +21,9 @@
   <meta name="twitter:image" content="https://www.sunnysbrunch.com/img/boerne-patio.jpg">
 
   <link rel="preload" href="fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;display=swap">
   <link rel="stylesheet" href="styles.css">
 
   <script type="application/ld+json">
@@ -108,6 +111,34 @@
   </script>
 </head>
 <body>
+  <!-- Reusable pen doodles: inline vectors only, no decorative image downloads. -->
+  <svg class="doodle-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="doodle-sun" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M72 46C76 61 65 75 49 75C34 76 24 64 25 49C25 35 35 24 50 25C64 24 72 34 72 46Z"/>
+          <path d="M49 7L51 16M49 85L48 94M7 50L16 48M84 49L95 51M17 17L25 25M77 77L85 84M17 83L24 76M76 24L84 15"/>
+          <path d="M39 46L40 48M59 45L60 47M39 57Q50 68 62 56"/>
+        </g>
+      </symbol>
+      <symbol id="doodle-coffee" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 39Q45 42 68 38L65 66Q61 79 43 79Q25 79 22 64ZM69 43C91 36 94 65 67 64M13 84Q48 91 79 82"/>
+          <path d="M32 29C22 18 40 18 32 8M48 30C38 20 56 17 49 7M62 27C54 18 69 17 64 10"/>
+        </g>
+      </symbol>
+      <symbol id="doodle-sparkles" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M41 12Q44 40 68 44Q45 48 40 79Q35 49 11 45Q34 40 41 12ZM78 8Q80 22 91 24Q79 27 77 40Q75 27 63 25Q74 23 78 8M80 66L82 85M72 77L91 75"/>
+        </g>
+      </symbol>
+      <symbol id="doodle-arrow" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 17C57 7 19 72 82 68M68 54L84 68L66 82"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="top">
@@ -144,13 +175,19 @@
   <main id="main">
     <!-- ============ ACT 1: BRUNCH ============ -->
     <section class="hero" id="brunch">
+      <figure class="hero__photo polaroid" data-reveal="polaroid">
+        <span class="tape tape--left" aria-hidden="true"></span>
+        <span class="tape tape--right" aria-hidden="true"></span>
       <img class="hero__img" src="img/boerne-patio.jpg" alt="Sunny's green-awning patio in Boerne, full of brunch guests" width="1066" height="1600" fetchpriority="high">
+        <figcaption class="hand-note">See you on the patio!</figcaption>
+      </figure>
       <div class="hero__body">
+        <div class="hero__hello"><span class="hand-note">Come on over.</span><svg class="doodle doodle--sun" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use class="doodle__glow" href="#doodle-sun"></use><use href="#doodle-sun"></use></svg></div>
         <p class="eyebrow">All-day brunch &amp; bar · Boerne + The Rim</p>
-        <h1>Life feels better at Sunny's</h1>
+        <h1><span class="hero__line">Life feels</span> <span class="hero__line">better at</span> <span class="hand-mark" data-reveal="draw">Sunny's<svg class="hand-mark__stroke" viewBox="0 0 280 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="draw-stroke" pathLength="1" d="M5 15C64 3 151 6 225 10C242 11 263 9 275 6M23 21C106 12 192 19 251 14"/></svg></span></h1>
         <p class="hero__sub">Mimosas, craft cocktails and elevated brunch favorites, for weekends done right.</p>
         <div class="hero__cta">
-          <button class="btn btn--sun btn--lg" data-waitlist>Join Waitlist</button>
+          <button class="btn btn--sun btn--lg" data-waitlist><span class="hand-mark hand-mark--circle" data-reveal="draw">Join Waitlist<svg class="hand-mark__stroke" viewBox="0 0 220 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="draw-stroke" pathLength="1" d="M192 12C154 1 46 0 15 18C-13 36 8 64 64 66C121 71 207 61 209 36C211 15 148 2 70 10"/></svg></span></button>
           <a class="btn btn--cream btn--lg" href="https://order.toasttab.com/online/sunnys-all-day-brunch-bar-518-river-road" target="_blank" rel="noopener">Order Online</a>
         </div>
         <p class="hero__fine">Online ordering is for pickup at Boerne.</p>
@@ -160,31 +197,50 @@
     <section class="menu stripes" aria-labelledby="menu-title">
       <div class="wrap">
         <p class="eyebrow">Signature plates &amp; pours</p>
-        <h2 id="menu-title">A good day starts sunny</h2>
+        <h2 id="menu-title">A good day starts <span class="hand-mark" data-reveal="draw">sunny<svg class="hand-mark__stroke" viewBox="0 0 280 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="draw-stroke" pathLength="1" d="M5 15C64 3 151 6 225 10C242 11 263 9 275 6M23 21C106 12 192 19 251 14"/></svg></span></h2>
         <p class="lede">Crepes, stacks and benedicts, a full house coffee bar, and a mimosa bar that goes all the way up to a tower.</p>
+        <p class="menu__note hand-note">A few favorites from our table <svg class="doodle doodle--coffee" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use class="doodle__glow" href="#doodle-coffee"></use><use href="#doodle-coffee"></use></svg></p>
         <ul class="dishes">
           <li class="dish">
-            <img src="img/pancakes.jpg" alt="Pancake stack with strawberries, berries and syrup" loading="lazy" width="601" height="900">
+            <figure class="dish__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--center" aria-hidden="true"></span>
+              <img src="img/pancakes.jpg" alt="Pancake stack with strawberries, berries and syrup" loading="lazy" width="601" height="900">
+            </figure>
             <div><h3>Berries &amp; Cream Stack</h3><p>Pancakes, whipped cream, fresh berries, syrup.</p><span class="price">$16.99</span></div>
           </li>
           <li class="dish">
-            <img src="img/pink-cocktail.jpg" alt="Pink cocktail on the patio rail" loading="lazy" width="600" height="900">
+            <figure class="dish__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--center" aria-hidden="true"></span>
+              <img src="img/pink-cocktail.jpg" alt="Pink cocktail on the patio rail" loading="lazy" width="600" height="900">
+            </figure>
             <div><h3>La Flor</h3><p>Tequila, dragon fruit, hibiscus, lime, pink salt rim.</p><span class="price">$14</span></div>
           </li>
           <li class="dish">
-            <img src="img/watermelon-salad.jpg" alt="Watermelon cubes with feta, basil and balsamic" loading="lazy" width="600" height="900">
+            <figure class="dish__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--center" aria-hidden="true"></span>
+              <img src="img/watermelon-salad.jpg" alt="Watermelon cubes with feta, basil and balsamic" loading="lazy" width="600" height="900">
+            </figure>
             <div><h3>Watermelon &amp; Feta</h3><p>Chilled watermelon, feta, mint, balsamic glaze.</p><span class="price">$10.99</span></div>
           </li>
           <li class="dish">
-            <img src="img/latte.jpg" alt="Iced latte with cream splashing over the top" loading="lazy" width="900" height="900">
+            <figure class="dish__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--center" aria-hidden="true"></span>
+              <img src="img/latte.jpg" alt="Iced latte with cream splashing over the top" loading="lazy" width="900" height="900">
+            </figure>
             <div><h3>House Lattes</h3><p>Tiramisu, Dubai pistachio, Strawberry Matcha and more.</p><span class="price">from $6.99</span></div>
           </li>
           <li class="dish">
-            <img src="img/fried-chicken.jpg" alt="Golden crispy fried chicken" loading="lazy" width="900" height="450">
+            <figure class="dish__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--center" aria-hidden="true"></span>
+              <img src="img/fried-chicken.jpg" alt="Golden crispy fried chicken" loading="lazy" width="900" height="450">
+            </figure>
             <div><h3>Crispy Chicken &amp; Waffles</h3><p>Liège waffles, fried chicken, syrup, pickles.</p><span class="price">$19.99</span></div>
           </li>
           <li class="dish">
-            <img src="img/green-cocktail.jpg" alt="Green cocktail with lime on a Sunny's napkin" loading="lazy" width="600" height="900">
+            <figure class="dish__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--center" aria-hidden="true"></span>
+              <img src="img/green-cocktail.jpg" alt="Green cocktail with lime on a Sunny's napkin" loading="lazy" width="600" height="900">
+            </figure>
             <div><h3>Moscow Hugo Spritz</h3><p>Elderflower, prosecco, mint, lime, ginger.</p><span class="price">$14</span></div>
           </li>
         </ul>
@@ -202,10 +258,15 @@
     <section class="visit" id="visit" aria-labelledby="visit-title">
       <div class="wrap">
         <p class="eyebrow">Find your Sunny's</p>
-        <h2 id="visit-title">Two patios. One vibe.</h2>
+        <h2 id="visit-title"><span class="hand-mark" data-reveal="draw">Two patios.<svg class="hand-mark__stroke" viewBox="0 0 280 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="draw-stroke" pathLength="1" d="M5 15C64 3 151 6 225 10C242 11 263 9 275 6M23 21C106 12 192 19 251 14"/></svg></span> One vibe.</h2>
+        <p class="visit__note hand-note">Make yourself at home. <svg class="doodle doodle--arrow" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use class="doodle__glow" href="#doodle-arrow"></use><use href="#doodle-arrow"></use></svg></p>
         <div class="locs">
           <article class="loc" data-loc="brunch">
-            <img src="img/awning.jpg" alt="Sunny's green awning with the yellow script logo" loading="lazy" width="1200" height="675">
+            <figure class="loc__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--left" aria-hidden="true"></span>
+              <span class="tape tape--right" aria-hidden="true"></span>
+              <img src="img/awning.jpg" alt="Sunny's green awning with the yellow script logo" loading="lazy" width="1200" height="675">
+            </figure>
             <div class="loc__body">
               <div class="loc__head"><h3>Boerne</h3><span class="status" data-status>…</span></div>
               <p class="loc__addr">518 River Rd<br>Boerne, TX 78006</p>
@@ -217,7 +278,11 @@
             </div>
           </article>
           <article class="loc" data-loc="brunch">
-            <img src="img/rim-storefront.jpg" alt="The Rim storefront with a yellow VW Beetle full of sunflowers" loading="lazy" width="800" height="1200">
+            <figure class="loc__photo polaroid" data-reveal="polaroid">
+              <span class="tape tape--left" aria-hidden="true"></span>
+              <span class="tape tape--right" aria-hidden="true"></span>
+              <img src="img/rim-storefront.jpg" alt="The Rim storefront with a yellow VW Beetle full of sunflowers" loading="lazy" width="800" height="1200">
+            </figure>
             <div class="loc__body">
               <div class="loc__head"><h3>The Rim</h3><span class="status" data-status>…</span></div>
               <p class="loc__addr">17623 La Cantera Pkwy, Unit 107<br>San Antonio, TX 78257</p>
@@ -234,6 +299,7 @@
 
     <section class="reviews" aria-labelledby="reviews-title">
       <div class="wrap">
+        <p class="reviews__note hand-note">Kind words, kept close. <svg class="doodle doodle--sparkles" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use class="doodle__glow" href="#doodle-sparkles"></use><use href="#doodle-sparkles"></use></svg></p>
         <h2 id="reviews-title" class="pull">“Sunny's is an absolute must-go for breakfast or brunch.”</h2>
         <div class="quotes">
           <figure class="quote">
@@ -260,24 +326,30 @@
     <section class="ah" id="after-hours" aria-labelledby="ah-title">
       <div class="ah__hero">
         <img class="ah__bg" src="img/ah-neon-bar.jpg" alt="Sunny's bar after dark: green tile wall, warm pendant lights and a neon sign" loading="lazy" width="1600" height="1104">
+        <div class="ah__doodles" aria-hidden="true">
+          <svg class="doodle doodle--night-sun" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use class="doodle__glow" href="#doodle-sun"></use><use href="#doodle-sun"></use></svg>
+          <svg class="doodle doodle--night-sparkles" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use class="doodle__glow" href="#doodle-sparkles"></use><use href="#doodle-sparkles"></use></svg>
+          <svg class="doodle doodle--night-coffee" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use class="doodle__glow" href="#doodle-coffee"></use><use href="#doodle-coffee"></use></svg>
+          <span class="hand-note">Same Sunny's. A little later.</span>
+        </div>
         <div class="ah__intro">
           <img class="ah__logo" src="img/ah-logo.png" alt="" width="600" height="474" loading="lazy">
           <p class="eyebrow">When the sun goes down · The Rim</p>
-          <h2 id="ah-title">After Hours <em>at Sunny's</em></h2>
+          <h2 id="ah-title">After Hours <em><span class="hand-mark" data-reveal="draw">at Sunny's<svg class="hand-mark__stroke" viewBox="0 0 280 28" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="draw-stroke" pathLength="1" d="M5 15C64 3 151 6 225 10C242 11 263 9 275 6M23 21C106 12 192 19 251 14"/></svg></span></em></h2>
           <p class="ah__tag">Cocktails. Bites. Live DJ.<br>Bring the crew and stay out a little later.</p>
           <p class="ah__when"><span class="status status--night" data-ah-status>…</span> Friday &amp; Saturday · 9 PM – 1 AM</p>
-          <a class="btn btn--amber btn--lg" href="https://tables.toasttab.com/sunnys-at-the-rim/experience/after-hours-at-sunny-s" target="_blank" rel="noopener">Grab a Table</a>
+          <a class="btn btn--amber btn--lg" href="https://tables.toasttab.com/sunnys-at-the-rim/experience/after-hours-at-sunny-s" target="_blank" rel="noopener"><span class="hand-mark hand-mark--circle" data-reveal="draw">Grab a Table<svg class="hand-mark__stroke" viewBox="0 0 220 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="draw-stroke" pathLength="1" d="M192 12C154 1 46 0 15 18C-13 36 8 64 64 66C121 71 207 61 209 36C211 15 148 2 70 10"/></svg></span></a>
         </div>
       </div>
 
       <div class="wrap">
         <ul class="reel" aria-label="After Hours photos">
-          <li><img src="img/ah-crowd.png" alt="Friends toasting cocktails over a charcuterie spread" loading="lazy" width="790" height="441"></li>
-          <li><img src="img/ah-martini.jpg" alt="Espresso martini and parm fries" loading="lazy" width="900" height="450"></li>
-          <li><img src="img/ah-old-fashioned.jpg" alt="Orange cocktails on the bar at night" loading="lazy" width="850" height="900"></li>
-          <li><img src="img/ah-friends.jpg" alt="Guests smiling at the bar after dark" loading="lazy" width="900" height="900"></li>
-          <li><img src="img/ah-pizza.jpg" alt="Pepperoni pizza being pulled apart" loading="lazy" width="600" height="900"></li>
-          <li><img src="img/ah-coasters.png" alt="After Hours at Sunny's coasters on green tile" loading="lazy" width="900" height="636"></li>
+          <li class="polaroid" data-reveal="polaroid"><span class="tape tape--center" aria-hidden="true"></span><img src="img/ah-crowd.png" alt="Friends toasting cocktails over a charcuterie spread" loading="lazy" width="790" height="441"></li>
+          <li class="polaroid" data-reveal="polaroid"><span class="tape tape--center" aria-hidden="true"></span><img src="img/ah-martini.jpg" alt="Espresso martini and parm fries" loading="lazy" width="900" height="450"></li>
+          <li class="polaroid" data-reveal="polaroid"><span class="tape tape--center" aria-hidden="true"></span><img src="img/ah-old-fashioned.jpg" alt="Orange cocktails on the bar at night" loading="lazy" width="850" height="900"></li>
+          <li class="polaroid" data-reveal="polaroid"><span class="tape tape--center" aria-hidden="true"></span><img src="img/ah-friends.jpg" alt="Guests smiling at the bar after dark" loading="lazy" width="900" height="900"></li>
+          <li class="polaroid" data-reveal="polaroid"><span class="tape tape--center" aria-hidden="true"></span><img src="img/ah-pizza.jpg" alt="Pepperoni pizza being pulled apart" loading="lazy" width="600" height="900"></li>
+          <li class="polaroid" data-reveal="polaroid"><span class="tape tape--center" aria-hidden="true"></span><img src="img/ah-coasters.png" alt="After Hours at Sunny's coasters on green tile" loading="lazy" width="900" height="636"></li>
         </ul>
 
         <div class="ah__info">
@@ -297,7 +369,8 @@
     <!-- ============ EXTRAS ============ -->
     <section class="extras" aria-label="Perks, gift cards and events">
       <div class="wrap extras__grid">
-        <a class="extra extra--photo" href="https://www.sunnysbrunch.com/events-caterings" target="_blank" rel="noopener">
+        <a class="extra extra--photo polaroid" data-reveal="polaroid" href="https://www.sunnysbrunch.com/events-caterings" target="_blank" rel="noopener">
+          <i class="tape tape--center" aria-hidden="true"></i>
           <img src="img/events.jpg" alt="A packed Sunny's patio during a private event" loading="lazy" width="667" height="1000">
           <span><strong>Events &amp; catering</strong>Birthdays, showers, team brunches. We'll host or bring it to you.</span>
         </a>

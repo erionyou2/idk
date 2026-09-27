@@ -47,20 +47,34 @@
   updateStatus();
   setInterval(updateStatus, 60_000);
 
-  // Day → night: flip once After Hours reaches the middle of the screen.
+  // Animation 3: a single, reversible day → night transition.
+  // Hysteresis keeps a tiny scroll near the boundary from flashing the theme.
   const ah = document.getElementById("after-hours");
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   let ticking = false;
   function checkNight() {
     ticking = false;
-    const night = ah.getBoundingClientRect().top < innerHeight * 0.55;
-    if (document.body.classList.contains("night") !== night) {
+    if (!ah) return;
+    const wasNight = document.body.classList.contains("night");
+    const boundary = innerHeight * (wasNight ? 0.62 : 0.48);
+    const night = ah.getBoundingClientRect().top < boundary;
+    if (wasNight !== night) {
       document.body.classList.toggle("night", night);
-      themeMeta.content = night ? "#0d0a10" : "#0b6e4f";
+      if (themeMeta) themeMeta.content = night ? "#0d0a10" : "#0b6e4f";
     }
   }
-  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(checkNight); } }, { passive: true });
-  addEventListener("resize", checkNight);
+  function scheduleNightCheck() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(checkNight);
+    }
+  }
+  addEventListener("scroll", scheduleNightCheck, { passive: true });
+  addEventListener("resize", scheduleNightCheck);
+  addEventListener("pageshow", scheduleNightCheck);
+  // Recheck after local photos/fonts settle, including a direct #after-hours link.
+  addEventListener("load", scheduleNightCheck, { once: true });
+  if (document.fonts) document.fonts.ready.then(scheduleNightCheck);
   checkNight();
 
   // Waitlist location picker
@@ -81,12 +95,52 @@
   document.querySelectorAll("[data-waitlist]").forEach(b => b.addEventListener("click", openSheet));
   sheet.addEventListener("click", e => { if (e.target === sheet || e.target.closest("[data-close]")) closeSheet(); });
 
-  // Gentle reveal on scroll
-  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const items = document.querySelectorAll(".dish, .loc, .quote, .reel li, .ah__info > div, .extra");
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-    }, { rootMargin: "0px 0px -8% 0px" });
-    items.forEach(el => { el.classList.add("reveal"); io.observe(el); });
+  // Animations 1 + 2: draw the ink, or drop and settle a polaroid once.
+  // Content is visible by default if JS/IntersectionObserver is unavailable.
+  const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+  const revealItems = [...document.querySelectorAll("[data-reveal]")];
+  const revealed = new WeakSet();
+  let revealObserver = null;
+
+  function configureReveals() {
+    if (revealObserver) revealObserver.disconnect();
+    revealObserver = null;
+    if (motionPreference.matches || !("IntersectionObserver" in window)) {
+      revealItems.forEach(el => {
+        el.classList.remove("reveal");
+        el.classList.add("in");
+        revealed.add(el);
+      });
+      return;
+    }
+
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in");
+        revealed.add(entry.target);
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" });
+
+    revealItems.forEach(el => {
+      if (revealed.has(el)) return;
+      el.classList.add("reveal");
+      // Never hide an actionable polaroid from someone tabbing through the page.
+      if (el.matches("a, button")) {
+        el.addEventListener("focus", () => {
+          el.classList.add("in");
+          revealed.add(el);
+          if (revealObserver) revealObserver.unobserve(el);
+        }, { once: true });
+      }
+      revealObserver.observe(el);
+    });
+  }
+  configureReveals();
+  if (motionPreference.addEventListener) {
+    motionPreference.addEventListener("change", configureReveals);
+  } else if (motionPreference.addListener) {
+    motionPreference.addListener(configureReveals);
   }
 })();
